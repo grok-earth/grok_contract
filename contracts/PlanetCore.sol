@@ -19,7 +19,10 @@ contract PlanetCore is
 {
     bytes32 private constant CONTROL_ROLE = keccak256("CONTROL_ROLE");
 
-    constructor() ERC721("Grok Planets", "PLANET") {}
+    constructor() ERC721("Grok Planets", "PLANET") {
+        _mint(msg.sender, 1);
+        _setTokenURI(1, string(abi.encodePacked("https://storage.googleapis.com/grok-nft/", "1", "/description.json")));
+    }
 
     function setController(address controller)
         external
